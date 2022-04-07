@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<link href="./index.css" rel="stylesheet">
+
+<h1>Climbing Memes 4.0 Leaderboards</h1>
+<p>
+This page shows leaderboards for the posts in the
+<a href="https://www.mountainproject.com/forum/topic/122037495/climbing-memes-40">Climbing Memes 4.0 forum thread</a>
+ on Mountain Project.
+</p>
+
+<p>Click the table headers to sort the leaderboards.</p>
+
+<p>
+Last updated: <span id="last-updated" data-ts="{{ last_updated }}"></span>
+</p>
+
+<div id="leaderboards">
+    <div class="leaderboard">
+        <h2>User leaderboard</h2>
+        <table id="users-table">
+            <thead>
+                <td>User</td>
+                <td class="selected desc">Likes</td>
+                <td>Posts</td>
+                <td>Average likes</td>
+            </thead>
+            <tbody>
+            {% for user in user_leaderboard %}
+            <tr>
+            <td><a href="{{ user.link }}">{{ user.name }}</a></td>
+            <td>{{ user.likes }}</td>
+            <td>{{ user.num_posts }}</td>
+            <td>{{ user.ratio }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="leaderboard">
+        <h2>Post leaderboard</h2>
+        <table id="posts-table">
+            <thead>
+                <td>Post</td>
+                <td class="selected desc">Likes</td>
+                <td>User</td>
+            </thead>
+            <tbody>
+            {% for post in post_leaderboard %}
+            <tr>
+                <td><a href="{{ post.link }}">{{ post.name }}</a></td>
+                <td>{{ post.likes }}</td>
+                <td>{{ post.poster }}</td>
+            </tr>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+
+<script src="./index.js"></script>
+
+</body>
+</html>
