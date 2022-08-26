@@ -4,11 +4,18 @@
 
 <link href="./index.css" rel="stylesheet">
 
-<h1>Climbing Memes 4.0 Leaderboards</h1>
+<h1>{{ name }} Leaderboards</h1>
 <p>
 This page shows leaderboards for the posts in the
-<a href="https://www.mountainproject.com/forum/topic/122037495/climbing-memes-40">Climbing Memes 4.0 forum thread</a>
+<a href="{{ thread_url }}" target="_blank" rel="noopener noreferrer">{{ name }} forum thread</a>
  on Mountain Project.
+</p>
+
+<h3>Other thread leaderboards</h3>
+<p>
+    {% for page in pages %}
+    <a href="{{ page.page_name }}.html">{{ page.name }}</a>
+    {% endfor %}
 </p>
 
 <p>Click the table headers to sort the leaderboards.</p>
@@ -30,7 +37,7 @@ Last updated: <span id="last-updated" data-ts="{{ last_updated }}"></span>
             <tbody>
             {% for user in user_leaderboard %}
             <tr>
-            <td><a href="{{ user.link }}">{{ user.name }}</a></td>
+            <td><a href="{{ user.link }}" target="_blank" rel="noopener noreferrer">{{ user.name }}</a></td>
             <td>{{ user.likes }}</td>
             <td>{{ user.num_posts }}</td>
             <td>{{ user.ratio }}</td>
@@ -51,7 +58,7 @@ Last updated: <span id="last-updated" data-ts="{{ last_updated }}"></span>
             <tbody>
             {% for post in post_leaderboard %}
             <tr>
-                <td><a href="{{ post.link }}">{{ post.name }}</a></td>
+                <td><a href="{{ post.link }}" target="_blank" rel="noopener noreferrer">{{ post.name }}</a></td>
                 <td>{{ post.likes }}</td>
                 <td>{{ post.poster }}</td>
             </tr>
